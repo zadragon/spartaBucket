@@ -1,15 +1,27 @@
 // 리액트 패키지를 불러옵니다.
 import React from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { history } from "./redux/configStore";
 
 const BucketList = (props) => {
   const my_lists = props.list;
+  const Bucket_list = useSelector((state) => state.bucket.list);
+  const navigate = useNavigate();
+
+  console.log(Bucket_list);
 
   return (
     <ListStyle>
-      {my_lists.map((list, index) => {
+      {Bucket_list.map((list, index) => {
         return (
-          <ItemStyle key={index}>
+          <ItemStyle
+            key={index}
+            onClick={() => {
+              navigate(`detail?${index}`);
+            }}
+          >
             {list}
           </ItemStyle>
         );
