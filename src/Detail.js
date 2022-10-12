@@ -5,7 +5,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { deleteBucket } from "./redux/modules/bucket";
+import { deleteBucket, doneBucket } from "./redux/modules/bucket";
 
 const Detail = (props) => {
   const dispatch = useDispatch();
@@ -23,13 +23,18 @@ const Detail = (props) => {
     navigate(-1);
   };
 
+  const todoDone = () => {
+    dispatch(doneBucket(dataIdx));
+    navigate(-1);
+  };
+
   return (
     <>
       <h1>{dataIdx} 번째 상세 페이지입니다! </h1>
-      <TodoText>{bucket_list[dataIdx]}</TodoText>
+      <TodoText>{bucket_list[dataIdx].text}</TodoText>
       <ButtonGroup>
-        <Button>완료하기</Button>
-        <Button onClick={() => delList()}>삭제하기</Button>
+        <Button onClick={todoDone}>완료하기</Button>
+        <Button onClick={delList}>삭제하기</Button>
       </ButtonGroup>
     </>
   );

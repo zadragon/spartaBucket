@@ -10,6 +10,7 @@ import NotFound from "./NotFound";
 import Detail from "./Detail";
 import { createBucket } from "./redux/modules/bucket";
 import { useDispatch } from "react-redux";
+import Progress from "./Progress";
 
 // 클래스형 컴포넌트는 이렇게 생겼습니다!
 function App() {
@@ -20,7 +21,7 @@ function App() {
 
   const addList = (e) => {
     const new_item = todoInput.current.value;
-    dispatch(createBucket(new_item));
+    dispatch(createBucket({ text: new_item }));
 
     todoInput.current.value = "";
     todoInput.current.focus();
@@ -30,6 +31,7 @@ function App() {
     <div className="App">
       <Container>
         <Title>내 버킷리스트</Title>
+        <Progress />
         <Line />
         {/* 컴포넌트를 넣어줍니다. */}
         {/* <컴포넌트 명 [props 명]={넘겨줄 것(리스트, 문자열, 숫자, ...)}/> */}
