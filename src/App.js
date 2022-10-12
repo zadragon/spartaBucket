@@ -15,8 +15,8 @@ import Progress from "./Progress";
 // 클래스형 컴포넌트는 이렇게 생겼습니다!
 function App() {
   const dispatch = useDispatch();
-  const list = ["영화관 가기", "매일 책읽기", "수영 배우기"];
-  const [state, setState] = useState(list);
+  // const list = ["영화관 가기", "매일 책읽기", "수영 배우기"];
+  // const [state, setState] = useState(list);
   const todoInput = useRef();
 
   const addList = (e) => {
